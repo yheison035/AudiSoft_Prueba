@@ -6,8 +6,8 @@ import CrudMarcas from '../components/Principal/Piloto/CrudMarcas';
 import CrudModelos from '../components/Principal/Piloto/CrudModelos';
 
 function Principal() {
-    const [stateSelect, setstateSelect] = useState(3);
-    const [stateTipoUsuario, setstateTipoUsuario] = useState(2);
+    const [stateTipoUsuario, setstateTipoUsuario] = useState(1);
+    const [stateSelect, setstateSelect] = useState(1);
 
     return (
         <React.Fragment>

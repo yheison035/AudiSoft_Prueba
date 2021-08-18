@@ -8,7 +8,7 @@ if ($_POST['METHOD'] == 'POST') {
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
     $query = "select * from usuario where correo=" . $correo . " and contrasena=" . $contrasena . "";
-    $queryAutoIncrement = "select MAX(id) as id from usuario";
+    $queryAutoIncrement = "select * from usuario";
     $resultado = metodoPost($query, $queryAutoIncrement);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
