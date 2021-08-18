@@ -38,7 +38,7 @@ function Chart() {
     return (
         <React.Fragment>
             <div className="container py-5 pt-4">
-                <p className="pt-3 font-weight-bold">Reporte Gráfico</p>
+                <p className="pt-3 font-weight-bold">REPORTE GRÁFICO</p>
                 <hr />
                 <Doughnut  data={dataGraph} options={optionsGraph} />
             </div>

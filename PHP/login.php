@@ -3,10 +3,14 @@ include 'Conexion/Conexion.php';
 
 header('Access-Control-Allow-Origin: *');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $query = "select * from usuario where correo=" . $_GET['correo'] . " and contrasena=" . $_GET['contrasena'] . "";
-    $resultado = metodoGet($query);
-    echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
+if ($_POST['METHOD'] == 'POST') {
+    unset($_POST['METHOD']);
+    $correo = $_POST['correo'];
+    $contrasena = $_POST['contrasena'];
+    $query = "select * from usuario where correo=" . $correo . " and contrasena=" . $contrasena . "";
+    $queryAutoIncrement = "select MAX(id) as id from usuario";
+    $resultado = metodoPost($query, $queryAutoIncrement);
+    echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
     exit();
 }

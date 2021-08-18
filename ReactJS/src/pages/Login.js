@@ -50,8 +50,8 @@ function Login() {
                         <i>Logueo prueba AUDISOFT</i>
                         <hr />
                         <div className="form-group pb-3">
-                            <MDBInput name="correo" label="Correo Electrónico" outline onChange={handleChange} />
-                            <MDBInput name="contraseña" label="Contraseña" outline onChange={handleChange} />
+                            <MDBInput type="text" name="correo" label="Correo Electrónico" outline onChange={handleChange} />
+                            <MDBInput type="password" name="contraseña" label="Contraseña" outline onChange={handleChange} />
                         </div>
                         <span className="boton-login" onClick={() => { sendData() }}>Iniciar Sesión</span>
                     </div>

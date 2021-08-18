@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Crud from './Principal/Administrador/Crud';
-import Listado from './Principal/Administrador/Listado';
-import Chart from './Principal/Piloto/Chart';
-import CrudMarcas from './Principal/Piloto/CrudMarcas';
-import CrudModelos from './Principal/Piloto/CrudModelos';
+import Crud from '../components/Principal/Administrador/Crud';
+import Listado from '../components/Principal/Administrador/Listado';
+import Chart from '../components/Principal/Piloto/Chart';
+import CrudMarcas from '../components/Principal/Piloto/CrudMarcas';
+import CrudModelos from '../components/Principal/Piloto/CrudModelos';
 
 function Principal() {
     const [stateSelect, setstateSelect] = useState(3);

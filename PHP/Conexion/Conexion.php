@@ -7,7 +7,7 @@ $pdo=null;
 $host="localhost";
 $user="root";
 $password="";
-$bd="db_prueba";
+$bd="audisoft";
 
 function conectar(){
     try{
