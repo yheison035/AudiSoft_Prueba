@@ -14,7 +14,7 @@ function Principal() {
 
     useEffect(() => {
         if (sessionStorage.length <= 0) {
-            history.push('/')
+            history.push('/');
         }else{
             setstateTipoUsuario(parseInt(sessionStorage.getItem('id_tipo_usuario')));
             if(sessionStorage.getItem('id_tipo_usuario') === "1"){
@@ -23,7 +23,7 @@ function Principal() {
                 setstateSelect(3);
             }
         }
-    }, [])
+    }, [history])
 
     return (
         <React.Fragment>

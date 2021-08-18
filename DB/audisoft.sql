@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-08-2021 a las 21:50:24
+-- Tiempo de generación: 19-08-2021 a las 00:24:00
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -43,7 +43,9 @@ INSERT INTO `marcas` (`id`, `id_usuario`, `nombre`) VALUES
 (2, 2, 'Chevrolet'),
 (3, 2, 'Nissan'),
 (4, 2, 'Lamborguini'),
-(7, 2, 'Ford');
+(7, 2, 'Ford'),
+(11, 19, 'Chevrolet'),
+(12, 19, 'FORD');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,14 @@ INSERT INTO `modelos` (`id`, `id_marcas`, `nombre`) VALUES
 (2, 2, 'Aveo'),
 (3, 3, 'Tiida'),
 (4, 2, 'AVEO'),
-(15, 1, 'as');
+(15, 1, 'as'),
+(16, 11, 'Mvw23'),
+(18, 11, '<ZXC<ZXC'),
+(19, 11, 'ASDASD'),
+(20, 11, 'ASDASD'),
+(21, 11, '234'),
+(23, 12, 'art'),
+(24, 4, 'aw');
 
 -- --------------------------------------------------------
 
@@ -108,8 +117,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `id_tipo_usuario`, `nombre`, `correo`, `contrasena`) VALUES
 (1, 1, 'Yeison Suarez', 'yheison0035@gmail.com', '123456'),
 (2, 2, 'Andres Diaz', 'adnres@gmail.com', '123456789'),
-(5, 1, 'Geraldine', 'geral@gmail.com', 'as123'),
-(16, 1, 'PRUEBA FINAL', 'pruebafinal@gmail.com', '1+asq4w');
+(5, 2, 'Geraldine', 'geral@gmail.com', 'as123'),
+(16, 2, 'PRUEBA FINAL', 'pruebafinal@gmail.com', '1+asq4w'),
+(19, 2, 'Linda', 'linda@gmail.com', '123456');
 
 --
 -- Índices para tablas volcadas
@@ -150,13 +160,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `modelos`
 --
 ALTER TABLE `modelos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_usuarios`
@@ -168,7 +178,7 @@ ALTER TABLE `tipos_usuarios`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
