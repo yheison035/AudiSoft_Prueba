@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MDBInput } from "mdbreact";
+import { Link } from "react-router-dom";
 import '../styles/styles.css';
 import axios from 'axios';
 import Swal from "sweetalert2";
@@ -55,7 +56,8 @@ function Login() {
                             <MDBInput type="text" name="correo" label="Correo Electrónico" outline onChange={handleChange} />
                             <MDBInput type="password" name="contraseña" label="Contraseña" outline onChange={handleChange} />
                         </div>
-                        <span className="boton-login" onClick={() => { sendData() }}>Iniciar Sesión</span>
+                        {/* <span className="boton-login" onClick={() => { sendData() }}>Iniciar Sesión</span> */}
+                        <Link to="/principal"><span className="boton-login">Iniciar Sesión</span></Link>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,6 @@ function Listado() {
     const cargarUsuarios = async () => {
         await axios.get(baseUrl)
             .then(response => {
-                debugger
                 setDataTable(response.data);
             })
     }
@@ -26,7 +25,8 @@ function Listado() {
                     <thead>
                         <tr>
                             <th className="text-center font-weight-bold">ID usuario</th>
-                            <th className="text-center font-weight-bold">Modelo</th>
+                            <th className="text-center font-weight-bold">Nombre Usuario</th>
+                            <th className="text-center font-weight-bold">Marca</th>
                             <th className="text-center font-weight-bold">Modelo</th>
                         </tr>
                     </thead>
@@ -34,14 +34,11 @@ function Listado() {
                         {dataTable.map((e, i) => (
                             <tr key={i}>
                                 <td className="text-center">{e.id_usuario}</td>
+                                <td className="text-center">{e.nombrePiloto}</td>
                                 <td className="text-center">{e.nombreMarca}</td>
                                 <td className="text-center">{e.nombreModelo}</td>
                             </tr>
                         ))}
-                        <tr>
-                            <td className="text-center">Renault</td>
-                            <td className="text-center">Logan</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
