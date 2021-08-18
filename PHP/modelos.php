@@ -32,6 +32,7 @@ if($_POST['METHOD']=='POST'){
 
 if($_POST['METHOD']=='PUT'){
     unset($_POST['METHOD']);
+    $id=$_GET['id'];
     $id_marcas=$_POST['id_marcas'];
     $nombre=$_POST['nombre'];
     $query="UPDATE modelos SET id_marcas='$id_marcas', nombre='$nombre' WHERE id='$id'";

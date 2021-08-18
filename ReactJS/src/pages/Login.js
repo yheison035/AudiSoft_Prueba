@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 
 function Login() {
-    const baseUrl = "http://localhost/Prueba%20React%20PHP/PHP/login.php";
+    const baseUrl = "http://localhost:8080/PROYECTO_REACTJS_PHP/AudiSoft_Prueba/PHP/login.php";
     const [data, setData] = useState({
         correo: '',
         contraseña: ''
@@ -25,8 +25,10 @@ function Login() {
         let f = new FormData();
         f.append('correo', data.correo);
         f.append('contrasena', data.contraseña);
+        f.append('METHOD', "POST");
         await axios.post(baseUrl, f)
             .then(response => {
+                debugger
                 if (response.data === 1) {  
                     sessionStorage.setItem('idusuario', response.data);
                     this.props.history.push('/principal');

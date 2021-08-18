@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Crud from '../components/Principal/Administrador/Crud';
 import Listado from '../components/Principal/Administrador/Listado';
 import Chart from '../components/Principal/Piloto/Chart';

@@ -33,9 +33,8 @@ if($_POST['METHOD']=='POST'){
 if($_POST['METHOD']=='PUT'){
     unset($_POST['METHOD']);
     $id=$_GET['id'];
-    $id_usuario=$_POST['id_usuario'];
     $nombre=$_POST['nombre'];
-    $query="UPDATE marcas SET id_usuario='$id_usuario', nombre='$nombre' WHERE id='$id'";
+    $query="UPDATE marcas SET nombre='$nombre' WHERE id='$id'";
     $resultado=metodoPut($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
