@@ -1,0 +1,54 @@
+.login {
+    background: #eeeeee;
+    width: 100%;
+    height: 100vh;
+}
+
+.login .contenedor {
+    position: absolute;
+    right: 10%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.login .contenedor .formulario {
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px 20px 20px 20px;
+    text-align: center;
+}
+
+.login .contenedor .formulario .boton-login {
+    background: gray;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* Principal */
+
+.principal_opciones {
+    height: 30px;
+    width: 100%;
+    background: gray;
+}
+
+.principal_opciones ul {
+    list-style: none;
+}
+
+.principal_opciones ul li {
+    color: #fff;
+    margin-left: 2rem;
+    padding: 0px 10px 0px 10px;
+    float: left;
+    cursor: pointer;
+}
+
+.principal_opciones ul li:hover {
+    background: #fff;
+    color: gray;
+}
