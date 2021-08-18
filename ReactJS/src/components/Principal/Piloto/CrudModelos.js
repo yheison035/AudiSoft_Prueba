@@ -42,14 +42,14 @@ function CrudModelos() {
     }
 
     const cargarModelos = async () => {
-        await axios.get(baseUrl)
+        await axios.get(baseUrl, { params: { id_usuario: parseInt(sessionStorage.getItem('id_usuario')) } })
             .then(response => {
                 setDataTable(response.data);
             })
     }
 
     const cargarMarcas = async () => {
-        await axios.get(baseUrlMarcas)
+        await axios.get(baseUrlMarcas, { params: { id_usuario: parseInt(sessionStorage.getItem('id_usuario')) } })
             .then(response => {
                 setDataMarcas(response.data);
             })
@@ -67,6 +67,7 @@ function CrudModelos() {
                     nombreInsertar: ''
                 })
                 setDataTable(dataTable.concat(response.data))
+                cargarModelos();
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -132,7 +133,7 @@ function CrudModelos() {
                             return (
                                 <tr key={e.id}>
                                     <td className="text-center">{e.id}</td>
-                                    <td className="text-center">{e.id_marcas}</td>
+                                    <td className="text-center">{e.nombreMarca}</td>
                                     <td className="text-center">{e.nombre}</td>
                                     <td className="text-center">
                                         <button className="btn btn-success" onClick={() => { seleccionarModelo(e, "Editar") }}>Editar</button>

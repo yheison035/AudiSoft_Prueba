@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
-import Crud from '../components/Principal/Administrador/Crud';
-import Listado from '../components/Principal/Administrador/Listado';
-import Chart from '../components/Principal/Piloto/Chart';
-import CrudMarcas from '../components/Principal/Piloto/CrudMarcas';
-import CrudModelos from '../components/Principal/Piloto/CrudModelos';
+import React, { useState, useEffect } from 'react';
+import Crud from '../components/Principal/administrador/Crud';
+import Listado from '../components/Principal/administrador/Listado';
+import Chart from '../components/Principal/piloto/Chart';
+import CrudMarcas from '../components/Principal/piloto/CrudMarcas';
+import CrudModelos from '../components/Principal/piloto/CrudModelos';
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function Principal() {
+    const history = useHistory();
     const [stateTipoUsuario, setstateTipoUsuario] = useState(1);
     const [stateSelect, setstateSelect] = useState(1);
 
+    useEffect(() => {
+        if (sessionStorage.length <= 0) {
+            history.push('/')
+        }else{
+            setstateTipoUsuario(parseInt(sessionStorage.getItem('id_tipo_usuario')));
+            if(sessionStorage.getItem('id_tipo_usuario') === "1"){
+                setstateSelect(1);
+            }else{
+                setstateSelect(3);
+            }
+        }
+    }, [])
+
     return (
         <React.Fragment>
-            <div className="container-fluid">
-                <span>Tipo Usuario: <b>Administrador</b></span>&nbsp;&nbsp;&nbsp;
-                <span>Usuario: <b>YEISON SUAREZ</b></span>
+            <div className="container-fluid pt-2">
+                <span>Tipo Usuario: <b className="font-weight-bold">{sessionStorage.getItem('id_tipo_usuario') === "1" ? "Administrador" : "Piloto"}</b></span>&nbsp;&nbsp;&nbsp;
+                <span>Usuario: <b className="font-weight-bold">{sessionStorage.getItem('nombre')}</b></span>
+                <Link to="/" className="btn_cerrarSesion">
+                    <span>Cerrar Sesión</span>
+                </Link>
             </div>
             <div className="principal_opciones">
                 <div className="container">

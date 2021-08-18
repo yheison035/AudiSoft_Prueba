@@ -8,9 +8,11 @@ function Crud() {
     const baseUrl = ('http://localhost:8080/PROYECTO_REACTJS_PHP/AudiSoft_Prueba/PHP/usuarios.php');
     const [data, setData] = useState({
         id: null,
+        id_tipo_usuario: 'DEFAULT',
         nombre: '',
         correo: '',
         contrasena: '',
+        id_tipo_usuarioInsertar: 'DEFAULT',
         nombreInsertar: '',
         correoInsertar: '',
         contrasenaInsertar: ''
@@ -48,7 +50,7 @@ function Crud() {
 
     const insertarUsuarios = async () => {
         var f = new FormData();
-        f.append("id_tipo_usuario", 1);
+        f.append("id_tipo_usuario", data.id_tipo_usuarioInsertar);
         f.append("nombre", data.nombreInsertar);
         f.append("correo", data.correoInsertar);
         f.append("contrasena", data.contrasenaInsertar);
@@ -56,6 +58,7 @@ function Crud() {
         await axios.post(baseUrl, f)
             .then(response => {
                 setData({
+                    id_tipo_usuarioInsertar: 'DEFAULT',
                     nombreInsertar: '',
                     correoInsertar: '',
                     contrasenaInsertar: ''
@@ -73,6 +76,7 @@ function Crud() {
 
     const actualizarUsuario = async () => {
         var f = new FormData();
+        f.append("id_tipo_usuario", data.id_tipo_usuario);
         f.append("nombre", data.nombre);
         f.append("correo", data.correo);
         f.append("contrasena", data.contrasena);
@@ -82,11 +86,12 @@ function Crud() {
                 var dataNueva = dataTable;
                 dataNueva.map(e => {
                     if (e.id === data.id) {
+                        e.id_tipo_usuario = data.id_tipo_usuario;
                         e.nombre = data.nombre;
                         e.correo = data.correo;
                         e.contrasena = data.contrasena;
                     }
-                    return[]
+                    return []
                 })
                 Swal.fire({
                     position: 'center',
@@ -111,13 +116,14 @@ function Crud() {
 
     return (
         <React.Fragment>
-            <div className="container py-5 pt-4">
+            <div className="container-fluid py-5 pt-4">
                 <p className="pt-3 font-weight-bold">USUARIOS</p>
                 <hr />
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th className="text-center font-weight-bold">ID</th>
+                            <th className="text-center font-weight-bold">Tipo Usuario</th>
                             <th className="text-center font-weight-bold">Nombre</th>
                             <th className="text-center font-weight-bold">Correo</th>
                             <th className="text-center font-weight-bold">Contraseña</th>
@@ -129,6 +135,7 @@ function Crud() {
                             return (
                                 <tr key={e.id}>
                                     <td className="text-center">{e.id}</td>
+                                    <td className="text-center">{e.id_tipo_usuario === "1" ? "Administrador" : "Piloto"}</td>
                                     <td className="text-center">{e.nombre}</td>
                                     <td className="text-center">{e.correo}</td>
                                     <td className="text-center">{e.contrasena}</td>
@@ -141,6 +148,14 @@ function Crud() {
                         })}
                         <tr>
                             <td className="text-center pt-5 font-weight-bold">Nuevo Usuario</td>
+                            <td>
+                                <label className="font-weight-bold mb-0 pb-1">Tipo de Usuario</label>
+                                <select name="id_tipo_usuarioInsertar" value={data.id_tipo_usuarioInsertar} className="form-control" onChange={handleChange}>
+                                    <option value={"DEFAULT"} disabled>Seleccione...</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Piloto</option>
+                                </select>
+                            </td>
                             <td className="text-center">
                                 <MDBInput type="text" name="nombreInsertar" value={data.nombreInsertar} label="Nombre" outline onChange={handleChange} />
                             </td>
@@ -160,6 +175,13 @@ function Crud() {
             <Modal isOpen={modalEditar}>
                 <ModalHeader><b className="font-weight-bold">Editar Usuario</b></ModalHeader>
                 <ModalBody>
+                    <div className="form-group">
+                        <select name="id_tipo_usuario" value={data.id_tipo_usuario} className="form-control" onChange={handleChange}>
+                            <option value={"DEFAULT"} disabled>Seleccione...</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Piloto</option>
+                        </select>
+                    </div>
                     <div className="form-group">
                         <label className="font-weight-bold mb-0 pb-1">Nombre</label>
                         <input type="text" className="form-control" name="nombre" value={data && data.nombre} onChange={handleChange} />

@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         $resultado=metodoGet($query);
         echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
     }else{
-        $query="select * from marcas";
+        $query="select * from marcas where id_usuario = ".$_GET['id_usuario'];
         $resultado=metodoGet($query);
         echo json_encode($resultado->fetchAll()); 
     }
@@ -52,6 +52,3 @@ if($_POST['METHOD']=='DELETE'){
 }
 
 header("HTTP/1.1 400 Bad Request");
-
-
-?>

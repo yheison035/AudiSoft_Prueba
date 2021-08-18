@@ -35,10 +35,11 @@ if($_POST['METHOD']=='POST'){
 if($_POST['METHOD']=='PUT'){
     unset($_POST['METHOD']);
     $id=$_GET['id'];
+    $id_tipo_usuario=$_POST['id_tipo_usuario'];
     $nombre=$_POST['nombre'];
     $correo=$_POST['correo'];
     $contrasena=$_POST['contrasena'];
-    $query="UPDATE usuario SET nombre='$nombre', correo='$correo', contrasena='$contrasena' WHERE id='$id'";
+    $query="UPDATE usuario SET id_tipo_usuario='$id_tipo_usuario', nombre='$nombre', correo='$correo', contrasena='$contrasena' WHERE id='$id'";
     $resultado=metodoPut($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");

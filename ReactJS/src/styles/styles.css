@@ -52,3 +52,24 @@
     background: #fff;
     color: gray;
 }
+
+.btn_cerrarSesion {
+    position: absolute;
+    right: 10%;
+    top: 12px;
+    cursor: pointer;
+}
+
+.btn_cerrarSesion span {
+    background: #641E16;
+    color: #fff;
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+    transition: all .5s;
+    font-weight: bold;
+}
+
+.btn_cerrarSesion span:hover {
+    background: #AF601A;
+    transform: scale(.8);
+}

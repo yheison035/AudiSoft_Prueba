@@ -36,7 +36,7 @@ function CrudMarcas() {
     }
 
     const cargarMarcas = async () => {
-        await axios.get(baseUrl)
+        await axios.get(baseUrl, { params: { id_usuario: parseInt(sessionStorage.getItem('id_usuario')) } })
             .then(response => {
                 setDataTable(response.data);
             })
@@ -44,7 +44,7 @@ function CrudMarcas() {
 
     const insertarMarcas = async () => {
         var f = new FormData();
-        f.append("id_usuario", 2);
+        f.append("id_usuario", parseInt(sessionStorage.getItem('id_usuario')));
         f.append("nombre", data.nombreInsertar);
         f.append("METHOD", "POST");
         await axios.post(baseUrl, f)
@@ -74,7 +74,7 @@ function CrudMarcas() {
                     if (e.id === data.id) {
                         e.nombre = data.nombre;
                     }
-                    return[]
+                    return []
                 })
                 Swal.fire({
                     position: 'center',

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { MDBInput } from "mdbreact";
-import { Link } from "react-router-dom";
 import '../styles/styles.css';
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 
 function Login() {
+    const history = useHistory();
     const baseUrl = "http://localhost:8080/PROYECTO_REACTJS_PHP/AudiSoft_Prueba/PHP/login.php";
     const [data, setData] = useState({
         correo: '',
@@ -23,16 +24,13 @@ function Login() {
     }
 
     const sendData = async () => {
-        let f = new FormData();
-        f.append('correo', data.correo);
-        f.append('contrasena', data.contraseña);
-        f.append('METHOD', "POST");
-        await axios.post(baseUrl, f)
+        await axios.get(baseUrl, { params: { correo: data.correo, contrasena: data.contraseña } })
             .then(response => {
-                debugger
-                if (response.data === 1) {  
-                    sessionStorage.setItem('idusuario', response.data);
-                    this.props.history.push('/principal');
+                if (response.data !== false) {  
+                    sessionStorage.setItem('id_usuario', parseInt(response.data.id));
+                    sessionStorage.setItem('id_tipo_usuario', parseInt(response.data.id_tipo_usuario));
+                    sessionStorage.setItem('nombre', response.data.nombre);
+                    history.push('/principal');
                 } else {
                     Swal.fire({
                         text: "Datos Invalidos!",
@@ -56,8 +54,8 @@ function Login() {
                             <MDBInput type="text" name="correo" label="Correo Electrónico" outline onChange={handleChange} />
                             <MDBInput type="password" name="contraseña" label="Contraseña" outline onChange={handleChange} />
                         </div>
-                        {/* <span className="boton-login" onClick={() => { sendData() }}>Iniciar Sesión</span> */}
-                        <Link to="/principal"><span className="boton-login">Iniciar Sesión</span></Link>
+                        <span className="boton-login" onClick={() => { sendData() }}>Iniciar Sesión</span>
+                        {/* <Link to="/principal"><span className="boton-login">Iniciar Sesión</span></Link> */}
                     </div>
                 </div>
             </div>
